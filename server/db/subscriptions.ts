@@ -46,6 +46,7 @@ export function getSubsList(
       db.raw('MAX(calendarEvents.scheduleDate) as scheduleDate'),
       db.raw('MAX(calendarEvents.isLastDate) as isLastDate')
     )
+    .from('calendarEvents')
     .groupBy(
       'subscriptions.id',
       'subscriptions.name',
