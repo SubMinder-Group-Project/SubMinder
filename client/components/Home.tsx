@@ -208,8 +208,6 @@ export default function Home({ isAuthComplete }: HomeProps) {
     return <p>There was an error</p>
   }
 
-  console.log(payments)
-
   let prevDate = 0
 
   return (
