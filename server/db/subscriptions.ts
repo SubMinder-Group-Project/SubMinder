@@ -27,13 +27,13 @@ export function getSubsList(
   db = connection
 ): Promise<Subscription[]> {
   return db('calendarEvents')
-    .where('calendarEvents.auth0Id', '=', user)
     .leftJoin(
       'subscriptions',
       'calendarEvents.subscriptionId',
       '=',
       'subscriptions.id'
     )
+    .where('calendarEvents.auth0Id', '=', user)
     .select(
       'subscriptions.id as id',
       'subscriptions.name as name',
@@ -67,7 +67,7 @@ export function getSubsList(
         website: row.website,
         frequency: row.frequency,
         userAuthId: row.userAuthId,
-        isLastDate: row.LastDate,
+        isLastDate: row.isLastDate,
         scheduleDate: row.scheduleDate,
       }))
     )
