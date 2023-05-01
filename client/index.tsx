@@ -10,10 +10,10 @@ import { Auth0Provider } from '@auth0/auth0-react'
 const root = createRoot(document.getElementById('app') as HTMLElement)
 root.render(
   <Auth0Provider
-    domain="tohora-2023-roisin.au.auth0.com"
-    clientId="YSI0r6oMGzh2bTgvNLP5iqsSKYKgTHbo"
+    domain="subminder-project.au.auth0.com"
+    clientId="8hzZDC3vvjh1BLQll44AIKLwDSG0NpGZ"
     redirectUri={window.location.origin}
-    audience="https://subminder/api"
+    audience="https://subminder-api/v1"
   >
     <Provider store={store}>
       <Router>

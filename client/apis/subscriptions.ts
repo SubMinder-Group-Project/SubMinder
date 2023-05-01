@@ -9,8 +9,8 @@ export async function getSubscriptions(token: string): Promise<Subscription[]> {
 
     const subscriptions = response.body.map((subscription: Subscription) => {
       // Format the date to 1 May
-      const date = new Date(subscription.scheduleDate)
-      subscription.scheduleDate = date.toLocaleDateString('en-GB', {
+      const date = new Date(subscription.endDate)
+      subscription.endDate = date.toLocaleDateString('en-GB', {
         day: 'numeric',
         month: 'long',
       })
