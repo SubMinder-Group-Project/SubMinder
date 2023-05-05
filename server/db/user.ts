@@ -12,18 +12,18 @@ export function getAllUsers(db = connection) {
 }
 
 interface SubEventUser {
-  id: number,
-  name: string,
-  category: string,
-  endDate: Date,
-  isLastDate: boolean,
-  scheduleDate: string,
-  price: number,
-  website: string,
-  frequency: string,
-  userAuthId: string,
-  firstName: string,
-  lastName: string,
+  id: number
+  name: string
+  category: string
+  endDate: Date
+  isLastDate: boolean
+  scheduleDate: string
+  price: number
+  website: string
+  frequency: string
+  userAuthId: string
+  firstName: string
+  lastName: string
   email: string
   isEmailSent: boolean
 }
@@ -36,7 +36,7 @@ export function getSubsEventsUsers(db = connection): Promise<SubEventUser[]> {
       'subscriptions.name as name',
       'subscriptions.category as category',
       'subscriptions.endDate as endDate',
-      'subscription.isEmailSent as isEmailSent',
+      'calendarEvents.isEmailSent as isEmailSent',
       'calendarEvents.isLastDate as isLastDate',
       'calendarEvents.scheduleDate as scheduleDate',
       'subscriptions.price as price',
@@ -46,6 +46,5 @@ export function getSubsEventsUsers(db = connection): Promise<SubEventUser[]> {
       'users.firstName as firstName',
       'users.lastName as lastName',
       'users.email as email'
-      
     )
 }

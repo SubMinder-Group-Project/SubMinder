@@ -174,5 +174,14 @@ exports.seed = async function (knex) {
       scheduleDate: '2023-03-12T08:41:30.872Z',
       isLastDate: false,
     },
+    {
+      id: 29,
+      subscriptionId: 13,
+      scheduleDate: '2023-05-05T03:13:01.685Z',
+      auth0Id:'google-oauth2|116389011410626950352',
+      isLastDate: false,
+      isEmailSent: false
+    },
+
   ])
 }

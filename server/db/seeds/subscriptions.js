@@ -150,5 +150,18 @@ exports.seed = async function (knex) {
       website: 'https://www.contact.co.nz',
       price: 300.0,
     },
+    {
+      id: 13,
+      userAuthId: 'google-oauth2|116389011410626950352',
+      name: 'Contact Energy',
+      image: '',
+      frequency: 'weekly',
+      startDate: '2023-05-05T03:13:01.685Z',
+      endDate: '2023-05-12T00:00:00.000Z',
+      category: 'Bills',
+      website: 'https://www.contact.co.nz',
+      reminder:true,
+      price: 300.0,
+    },
   ])
 }
