@@ -9,7 +9,7 @@ exports.up = function (knex) {
     table.string('lastName')
     table.string('userName')
     table.string('authID')
-    table.string('email')
+
     table.string('image')
   })
 }
