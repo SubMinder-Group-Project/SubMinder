@@ -26,6 +26,7 @@ interface SubEventUser {
   lastName: string
   email: string
   isEmailSent: boolean
+  eventId:number
 }
 export function getSubsEventsUsers(db = connection): Promise<SubEventUser[]> {
   return db('subscriptions')
@@ -36,6 +37,7 @@ export function getSubsEventsUsers(db = connection): Promise<SubEventUser[]> {
       'subscriptions.name as name',
       'subscriptions.category as category',
       'subscriptions.endDate as endDate',
+      'calendarEvents.id as eventId',
       'calendarEvents.isEmailSent as isEmailSent',
       'calendarEvents.isLastDate as isLastDate',
       'calendarEvents.scheduleDate as scheduleDate',
