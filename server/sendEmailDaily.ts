@@ -3,18 +3,18 @@ import { getSubsEventsUsers } from './db/user'
 import { updateEmailStatus } from './db/events'
 import sendReminderEmail from './lib'
 
-cron.schedule('28 17 * * *', async () => {
+cron.schedule('0 9 * * *', async () => {
   try {
     // Your code for the reminder goes here
     console.log('i ran once')
     const data = await getSubsEventsUsers()
-   
+
     for (const event of data) {
       if (event.isEmailSent == false) {
         sendReminderEmail(event.email, event.scheduleDate, event.name)
         const emailStatus = true
         console.log('i have sent an loop')
-        const newEvent =await updateEmailStatus(event.id, emailStatus)
+        const newEvent = await updateEmailStatus(event.id, emailStatus)
         await updateEmailStatus(event.eventId, emailStatus)
         console.log(newEvent)
       }
