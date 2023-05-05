@@ -21,6 +21,7 @@ function App() {
     lastName?: string
     userName?: string
     image?: string
+    email?: string
   }
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -30,6 +31,7 @@ function App() {
       lastName: user?.family_name,
       userName: user?.nickname,
       image: user?.picture,
+      email: user?.email,
     }
     await addLogInInfo(userInfo, token)
     setIsAuthComplete(true)

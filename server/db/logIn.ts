@@ -5,10 +5,11 @@ interface Props {
   lastName?: string
   userName?: string
   image?: string
+  email?:string
 }
 
 export async function addUserOrReturnNull(
-  { firstName, lastName, userName, image }: Props,
+  { firstName, lastName, userName, image, email }: Props,
   authID: string,
   db = connection
 ) {
@@ -18,7 +19,7 @@ export async function addUserOrReturnNull(
   }
 
   const newUser = await db('users')
-    .insert({ firstName, lastName, userName, authID, image })
+    .insert({ firstName, lastName, userName, authID, image, email })
     .returning('*')
   return newUser[0]
 }

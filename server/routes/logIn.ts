@@ -9,13 +9,14 @@ router.post('/', checkJwt, async (req: JwtRequest, res: Response) => {
   try {
     const auth0Id = req.auth?.sub
     if (auth0Id) {
-      const { firstName, lastName, userName, image } = req.body
+      const { firstName, lastName, userName, image, email } = req.body
       const newUser = await addUserOrReturnNull(
         {
           firstName,
           lastName,
           userName,
           image,
+          email,
         },
         auth0Id
       )

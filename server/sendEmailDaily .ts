@@ -1,31 +1,20 @@
-import { MailService } from '@sendgrid/mail'
-require('dotenv').config()
+import cron from 'node-cron'
+import { getSubsEventsUsers } from './db/user'
+import { updateEmailStatus } from './db/events'
+import sendReminderEmail from './lib'
 
-const sgMail = require('@sendgrid/mail')
-sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-
-export default function sendReminderEmail(
-  to: string,
-  sub: string,
-  date: string
-) {
-  if (!to) {
-    console.error('Recipient email is required')
-    return
+cron.schedule('0 9 * * *', async () => {
+  try {
+    // Your code for the reminder goes here
+    const data = await getSubsEventsUsers()
+    for (const event of data) {
+      if (event.isEmailSent === false) {
+        sendReminderEmail(event.email, event.scheduleDate, event.name)
+        const emailStatus = true
+        await updateEmailStatus(event.id, emailStatus)
+      }
+    }
+  } catch (error) {
+    console.error('An error occurred while running the cron job:', error)
   }
-  const msg = {
-    to: to,
-    from: 'bob400690@gmail.com',
-    subject: `Reminder: You have a payment due soon for ${sub}`,
-    text: 'You have a payment due today. Please make sure you check Your subscription, and make sure you want to commit to the payment.',
-    html: '<p>You have a payment due soon. Please make sure you check Your subscription, and make sure you want to commit to the payment.</p>',
-  }
-  sgMail
-    .send(msg)
-    .then(() => {
-      console.log(`'Email sent' ${sub}, this is for ${date}`)
-    })
-    .catch((error: MailService) => {
-      console.error(error)
-    })
-}
+})
