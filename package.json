@@ -7,7 +7,7 @@
     "fullstack"
   ],
   "scripts": {
-    "start":"node dist/server/index.js && node dist/server/sendEmailDaily.js",
+    "start": "ts-node server/index.ts && ts-node server/sendEmailDaily.ts",
     "test": "jest",
     "test:watch": "jest --noStackTrace --watchAll",
     "dev": "run-p dev:css dev:client dev:server",
