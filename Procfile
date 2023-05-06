@@ -1,2 +1,3 @@
 web: npm run start
-release: ts-node ./server/sendEmailDaily.ts
+release: npm run knex migrate:latest
+start: npm run start && ts-node ./server/sendEmailDaily.ts
