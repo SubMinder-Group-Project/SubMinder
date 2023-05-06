@@ -3,7 +3,7 @@ import { getSubsEventsUsers } from './db/user'
 import { updateEmailStatus } from './db/events'
 import sendReminderEmail from './lib'
 
-cron.schedule('5 * * * *', async () => {
+cron.schedule('10 * * * *', async () => {
   try {
     
     console.log('i ran once')
