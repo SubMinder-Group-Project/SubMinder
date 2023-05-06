@@ -32,7 +32,7 @@ require('dotenv').config()
 //   console.error('CRON_SCHEDULE is not defined')
 // }
 
-cron.schedule('7 17 * * *', async () => {
+cron.schedule('*/1 * * * *', async () => {
   try {
     console.log('i ran once')
     const data = await getSubsEventsUsers()
