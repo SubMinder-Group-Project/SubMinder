@@ -37,7 +37,7 @@ function ManageSubscription() {
 
   return (
     <>
-      <Email />
+      {/* <Email /> */}
       <div className="right main-page-container flex py-2">
         <button className="ml-auto border border-accent-yellow px-4 py-2 font-medium text-accent-yellow">
           <Link to="/addsubscription">Add a new subscription</Link>
